@@ -9,7 +9,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,13 +42,28 @@ public class MainActivity extends AppCompatActivity {
         initItem();
         ItemAdapter adapter = new ItemAdapter(MainActivity.this, R.layout.list_item, itemList);
         mListView.setAdapter(adapter);
+
         mListView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Item item =itemList.get(position);
-                Toast.makeText(MainActivity.this, item.getText(),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
+                Item item = itemList.get(position);
+                Toast.makeText(MainActivity.this, item.getText(), Toast.LENGTH_SHORT).show();
+                switch (position) {
+                    case 0:
+                        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        Intent intent2 = new Intent(MainActivity.this, ThirdActivity.class);
+                        startActivity(intent2);
+                        break;
+                    case  2:
+                        Intent intent3=new Intent(MainActivity.this,FourActivity.class);
+                        startActivity(intent3);
+                        break;
+                    default:
+                        break;
+                }
             }
         });
     }
